@@ -1,5 +1,4 @@
 FROM fulcrum/php7.4-composer1 AS builder
-LABEL IF Fulcrum "fulcrum@ifsight.net"
 
 ENV BUILDDATE 202012181700
 
@@ -25,6 +24,7 @@ echo "################## [$(date)] Done ##################"                     
 echo "################## Elapsed: $(expr $(date "+%s") - $STARTTIME) seconds ##################"
 
 FROM scratch
+LABEL IF Fulcrum "fulcrum@ifsight.net"
 COPY --from=builder / /
 
 ENV COLUMNS 100
